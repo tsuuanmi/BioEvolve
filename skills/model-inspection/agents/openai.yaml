@@ -1,0 +1,3 @@
+interface:
+  display_name: "Model Inspection"
+  short_description: "Inspect biological neural network architectures and licensed checkpoints (CNN, GNN, Transformer"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Feedback Loop"
+  short_description: "Close a Scientific Improvement Loop experiment by keeping or rejecting a candidate, interpretin"

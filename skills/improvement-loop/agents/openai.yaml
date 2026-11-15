@@ -1,0 +1,3 @@
+interface:
+  display_name: "Scientific Improvement Loop"
+  short_description: "Coordinate a single bounded Scientific Improvement Loop in a bioinformatics tool or neural-mode"

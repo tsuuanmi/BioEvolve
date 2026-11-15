@@ -1,0 +1,3 @@
+interface:
+  display_name: "BioEvolve Evaluate"
+  short_description: "Compare pinned baseline and candidate bioinformatics tools or neural models with matc"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "BioEvolve Inspect Model"
+  short_description: "Inspect biological CNN, GNN or Transformer checkpoints, architecture, weights and act"

@@ -3,31 +3,35 @@ status: draft
 implements: [SRS-BE]
 ---
 
-# Portable skill-first architecture
+# Skill-first and System boundaries
 
-BioEvolve may be consumed as (1) independent skills, (2) compositions of skills/workflows, or (3) optional plugin/capability adapter to System.
+BioEvolve is reusable as standalone **skills**, a composed **SIL workflow**, or an optional System **capability/plugin**. Skills have plain canonical names, not a project prefix.
 
-| Owner | Responsible for | Does not own |
+| Owner | Does | Does not |
 |---|---|---|
-| BioEvolve skill | Inspect, diagnose, propose, evaluate, explain, export evidence | Worker lifecycle |
-| BioEvolve workflow | Order of scientific investigation and artifact handoff | Global scheduling |
-| System (optional) | Work/Attempt, dispatch, retry, verification | Biological scientific truth |
-| External target repository | Source/checkpoint, tests, domain evaluator, release policy | BioEvolve generic conventions |
+| BioEvolve SIL | Ideation, hypothesis, metric proposal, experiment planning, result comparison, feedback artifacts | Schedule workers or decide biological release |
+| Rust core (planned) | Typed contracts, gating/comparison and evidence integrity | Train models or replace domain evaluators |
+| Python (planned) | Scientific/model experiments and upstream tool adapters | Own agent orchestration |
+| TypeScript (planned) | System plugin/UI adapter | Create another scheduler/Work state |
+| System (optional) | Work/Attempt, spawn/retry/cancel, verify artifact integrity | Certify domain-specific scientific accuracy |
+| Target repo | Code/weights, datasets, scientific ground truth, evaluation and approval | BioEvolve global workflow |
 
 ```text
-System Work / local agent / human
-            |
-       BioEvolve Skill
-            |
- external target + reusable external analysis tools
-            |
-     experiment artifacts
-            |
- target-owned scientific validation
-            |
- optional System Artifact handoff
+Local agent / System Worker
+           |
+  BioEvolve improvement-loop skill
+     |                   |
+ idea/hypothesis      metric contract (frozen)
+     |                   |
+  isolated candidate + external evaluator
+           |
+    Rust result comparison (planned)
+           |
+   feedback + evidence artifacts
+           |
+ System verification (optional) + domain science gate
 ```
 
-Software inspection includes code, algorithm, intermediate states and performance; model inspection includes architecture, weights, activations and causal probes. Rewriting in Rust or editing weights is an **intervention option**, not a default or guaranteed improvement. There is no BioEvolve executor or System plugin implemented in this PR.
+BioEvolve uses **existing target evaluation** (e.g. DNA's `dna-eval`) and does not reimplement it. Model interpretability is a supporting analysis path, not required in every experiment. Rewriting a tool or editing weights is a possible outcome, not the default. System verifies delivery/contract; the domain evaluator verifies scientific claims.
 
-Use the [reference contracts](../reference/artifacts.md) for outputs and [validation gates](../validation/gates.md) for scientific safeguards.
+See [loop](loop.md), [stack](tech-stack.md), [metrics](../reference/metrics.md).

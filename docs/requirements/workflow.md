@@ -2,17 +2,18 @@
 status: draft
 ---
 
-# BioEvolve target requirements
+# BioEvolve target requirements — SIL first
 
-- **SRS-BE-001:** Accept authorized, pinned external tools and model checkpoints without taking ownership of target source.
-- **SRS-BE-002:** Expose independent skills and composable workflows with explicit input/output contracts.
-- **SRS-BE-003:** Record immutable baseline and evidence before candidate intervention.
-- **SRS-BE-004:** Require reproducible failure, falsifiable hypothesis, predicted change and control.
-- **SRS-BE-005:** Distinguish raw observations, interpretation, causal evidence and accepted scientific claims.
-- **SRS-BE-006:** Use target-approved evaluators and comparable metrics, preserve provenance and detect regression.
-- **SRS-BE-007:** Preserve negative/inconclusive results, explicit failure reasons and bounded next actions.
-- **SRS-BE-008:** Integrate into System Work/Attempt/Artifact without recreating orchestration or verification.
-- **SRS-BE-009:** Reuse established scientific and model-analysis libraries before implementation.
-- **SRS-BE-010:** Protect independent holdouts, licensed weights, private datasets and source integrity.
-- **SRS-BE-011:** Inspect CNN/GNN/Transformer mechanisms using weights **and** activations with causal controls.
-- **SRS-BE-012:** Keep workflows interruptible, resource-bounded and reproducible.
+- **SRS-BE-001:** Accept authorized pinned external tool/model targets without taking ownership of their source or scientific truth.
+- **SRS-BE-002:** Provide discoverable, **canonical unprefixed** skills and a composed bounded `improvement-loop` usable by local agents or System workers.
+- **SRS-BE-003:** Support idea → hypothesis → frozen metric plan → isolated test → comparison → feedback and iterated update, even when no pre-existing failure class is known.
+- **SRS-BE-004:** Establish unchanged reproducible baseline, external evaluator and immutable experiment provenance.
+- **SRS-BE-005:** Recommend task-specific primary metrics, scientific hard gates, diagnostic slices, uncertainty and budget **before** candidate results; record domain-owner approval/freeze.
+- **SRS-BE-006:** Compare candidates only on comparable data and evaluator versions; prioritize mandatory safety gates over global-score improvements.
+- **SRS-BE-007:** Preserve positive, negative, failed, blocked and inconclusive attempts with explicit reasons, next hypothesis and bounded retry/stop.
+- **SRS-BE-008:** Use **Rust core, Python experiments, TypeScript integration** with language-neutral versioned contracts.
+- **SRS-BE-009:** System remains owner of Work/Attempt, scheduler/retry and artifact verification; target owners retain scientific approval.
+- **SRS-BE-010:** Reuse existing target evaluation and model tooling; avoid building another scientific model engine or workflow scheduler.
+- **SRS-BE-011:** Protect independent holdouts, licensed weights, raw/private data and unmodified source/checkpoints.
+- **SRS-BE-012:** Optional tool/model inspection must distinguish raw observation from interpretation and causal evidence.
+- **SRS-BE-013:** Bound attempts by time/cost/compute and make every experiment reproducible and interruptible.

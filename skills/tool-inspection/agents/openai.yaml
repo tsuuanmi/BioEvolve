@@ -1,0 +1,3 @@
+interface:
+  display_name: "Tool Inspection"
+  short_description: "Inspect an existing bioinformatics program or scientific algorithm, trace source and intermedia"

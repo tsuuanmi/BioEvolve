@@ -3,23 +3,43 @@ type: proposal
 id: PROP-0001
 status: proposed
 created: 2026-11-15
-summary: Bootstrap skill-first, System-compatible BioEvolve scientific improvement workflows.
+summary: Prioritize metric-aware Scientific Improvement Loops with Rust core, Python experiments, TypeScript integrations and portable skills.
 ---
 
-# PROP-0001 — Portable BioEvolve MVP
+# PROP-0001 — SIL-first BioEvolve MVP
 
-## PR #1 scope
+## Decision framing
 
-Document the two tracks (traditional scientific tools and neural models), shared Scientific Improvement Loop, target vs System boundaries, artifact and validation contracts, reuse-first decisions and modular SKILL.md entrypoints. Copy System's portable documentation architecture standard. **Docs and instructions only; no functioning plugin, engine or model editor.**
+The first product is a **fast, safe, evidence-driven Scientific Improvement Loop**, not a universal black-box interpreter, autonomous scheduler, paper, or new biology model.
 
-## Later, separate PRs
+`Idea → Falsifiable hypothesis → Metric proposal/freeze → Test → Evaluate → Feedback → Next idea`
 
-1. Port/reuse portable System docs checker; verify level 1 and CI before claiming conformance.
-2. Implement manifest/artifact validation and a synthetic baseline→candidate→feedback workflow with an existing evaluator.
-3. Integrate DNA `dna-eval` as a read-only tool pilot, respecting dataset holdout and release restrictions.
-4. Integrate a small licensed CNN/GNN pilot using upstream model tooling, probing activations and causal controls.
-5. Inspect current System Work/Attempt/Artifact interfaces; implement only a capability adapter (not a dispatcher).
+Borrow [autoresearch's](../research/RES-0002-autoresearch.md) tight mutation scope, fixed budget/evaluator, baseline, experiment log and keep/discard feedback. Diverge by adding scientific safety gates, metric recommendation, multiple target-dependent objectives, explicit failed/inconclusive states and independent holdout promotion.
 
-## Acceptance criteria
+## Technology plan
 
-Each skill must state trigger, input, output, stop and handoff. Negative experiments stay queryable; validation is independent. No silent failures, holdout leakage, overwrite of original code/weights, fabricated SOTA results or new System work state.
+- **Rust core:** state and artifact contracts, evidence/provenance check, deterministic comparison/gates, CLI (planned).
+- **Python experiment:** scientific/model adapters, tests and training experiments using upstream tools and existing target evaluators (planned).
+- **TypeScript integration:** optional System skill/plugin adapter or UI, only after real API review (planned).
+
+Avoid early database, large microservice architecture or duplicate agent scheduling. Versioned JSON is the portability boundary.
+
+## PR #1 only
+
+Update docs, skill names and instruction entrypoints, SIL semantics, metric/evaluation contract, autoresearch adaptation research and stack ownership. **Documentation and SKILL.md only**: no tested runtime, installed System plugin or scientific benchmark success.
+
+## Phased follow-on PRs
+
+1. **SIL proof:** minimum Rust metric/evidence comparator and Python synthetic evaluator adapter; strict fixed metric contract, crash/timeout states and JSON artifacts. Test one improvement, one regression, one inconclusive result, one failed run; demonstrate bounded feedback.
+2. **DNA pilot:** call existing `dna-eval`; propose scientific metrics from its current rules, apply wrong-auto-pass gates and compare changes on authorized development panels without using holdout as tuning.
+3. **Mechanism pilots:** use optional source tracing/CNN/GNN probing **only when needed for a specific failure hypothesis**, not as a prerequisite for any optimization.
+4. **System integration:** read live Work/Attempt/Artifact interface, add minimal TypeScript adapter; System owns scheduling and verification.
+5. **Docs checks:** adopt tested portable documentation checker and CI, update level claims only when passing. This may proceed in parallel.
+
+## Acceptance criteria for initial runnable proof
+
+- An agent can submit an idea, obtain a falsifiable hypothesis and a **suggested metric contract with explicit domain approval**, and run an unchanged evaluator under the same budget for baseline and candidate.
+- A safety regression vetoes improvement; feedback states are explicit; failures are not encoded as scores.
+- Results include measured effect, per-slice changes, cost, uncertainty, provenance, and a bounded next idea.
+- All candidates are isolated; negative experiments preserved; no secret/holdout leakage.
+- No scientific production merge without independent domain evaluation.

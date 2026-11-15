@@ -1,3 +1,0 @@
-interface:
-  display_name: "BioEvolve Feedback Loop"
-  short_description: "Close scientific optimization attempts with evidence-backed accept-for-review, reject"

@@ -7,11 +7,12 @@ summary: Evaluate reuse opportunities for scientific analysis, model interpretat
 
 # RES-0001 — Reuse assessment shortlist
 
+- [autoresearch](https://github.com/karpathy/autoresearch): study baseline, immutable evaluator, fixed compute budget, experiment log and keep/discard decisions; [detailed adaptation](RES-0002-autoresearch.md).
 - [Captum](https://github.com/pytorch/captum): PyTorch attribution/ablation.
-- [NNsight](https://github.com/ndif-team/nnsight): neural activation tracing and intervention; confirm architecture support.
-- [PyTorch Geometric](https://github.com/pyg-team/pytorch_geometric): graph models and explanation support.
-- [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve): study evaluation/search loop mechanics, do not duplicate System scheduling.
-- [DNA](https://github.com/tsuuanmi/DNA): `dna-eval` provides scientific ground truth and matched evaluation.
-- [System](https://github.com/tsuuanmi/System): orchestration, workers, Work/Attempt and artifact verification.
+- [NNsight](https://github.com/ndif-team/nnsight): neural activation tracing/interventions; verify architecture support.
+- [PyTorch Geometric](https://github.com/pyg-team/pytorch_geometric): graph data/model and explanation utilities.
+- [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve): study evaluator/search mechanics, not System scheduling.
+- [DNA](https://github.com/tsuuanmi/DNA): reuse `dna-eval`, scientific ground truth and existing quality gates.
+- [System](https://github.com/tsuuanmi/System): work orchestration and artifact verification.
 
-Before adopting, inspect license, active maintenance, actual API, runtime cost, reproducibility and integration contract. No package is vendored by PR #1. Mechanistic interpretation requires experimental controls, not only weight statistics or visually convincing attribution.
+For each candidate check license, maintenance, exact API, domain fit, overhead, reproducibility and integration boundary. None is a PR #1 dependency. First deliver the SIL protocol/evaluator before heavy inspection libraries.

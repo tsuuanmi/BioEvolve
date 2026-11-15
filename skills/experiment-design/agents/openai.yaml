@@ -1,0 +1,3 @@
+interface:
+  display_name: "Experiment Design"
+  short_description: "Design a small reversible controlled code, algorithm or model change with fixed compute budget "

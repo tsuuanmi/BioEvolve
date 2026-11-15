@@ -2,12 +2,15 @@
 status: draft
 ---
 
-# Evaluation gates (target)
+# Scientific improvement evaluation gates (proposed)
 
-- **G0 Baseline:** unmodified reproducible run with code/checkpoint, data, environment and evaluator hashes.
-- **G1 Mechanism:** reproduce a failure, specify a falsifiable explanation and negative controls; attribution alone is not causal proof.
-- **G2 Development:** matched candidate/baseline evaluation with per-class gains and losses, uncertainty, performance and cost.
-- **G3 Independent:** authorized locked holdout and distribution-shift checks; no repeated holdout tuning.
-- **G4 Decision:** immutable artifacts, explicit accept-for-review/reject/investigate/blocked outcome and next hypothesis.
+- **G0 — Objective freeze:** `metric-design` recommends and a domain owner freezes task unit, primary metric/direction/minimum effect, non-negotiable scientific hard gates, diagnostics, budget, evaluator identity/config, dataset manifest/splits, uncertainty rule and tie-breaker **before** test results.
+- **G1 — Baseline / provenance:** reproduce unchanged baseline with pinned source/checkpoint, data, software/hardware versions, seeds where relevant and an evaluator outside the candidate change scope.
+- **G2 — Falsifiable hypothesis:** document mechanism, expected effect, alternatives, negative controls and a stopping criterion. Distinguish causal evidence from attribution.
+- **G3 — Controlled development:** identical evaluator and scientific truth for candidate and baseline; paired comparisons, slice regressions, resource measurements, confidence/low-frequency constraints. Use fast subset only as a filter; full development data is needed for improvement claims.
+- **G4 — Explicit feedback:** report `improved/regressed/neutral/inconclusive/failed/blocked`; preserve rejected candidates and logs, update hypothesis history, propose bounded next action. No silent failures and no fake zero score for crashes.
+- **G5 — Independent promotion:** authorized untouched holdout, distribution shift and independent domain approval before shipping; no self-approval by System's code CI or agent.
 
-Reuse target scientific gates (e.g. DNA's `dna-eval`). Engineering optimization, biological accuracy, and interpretability accuracy are different outcomes. Do not automatically approve scientific changes or misrepresent clinical/forensic validity.
+Reuse **target's evaluator**, especially DNA's existing `dna-eval` and its exact wrong-pass/review rules. Never substitute a generic BioEvolve score for a scientific safety gate. If throughput improves but false positive variants increase beyond tolerance, candidate fails. If sample power cannot establish a safety threshold, result is inconclusive. Distinguish engineering, scientific and mechanistic gains.
+
+Changing evaluation criteria after inspecting results is a **new protocol version** and requires new unbiased validation.

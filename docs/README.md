@@ -1,12 +1,12 @@
 # BioEvolve documentation
 
-- [Requirements](requirements/README.md): intended product behavior.
-- [Architecture](architecture/README.md): boundaries and improvement loop.
-- [Reference](reference/README.md): proposed artifact interface.
-- [Validation](validation/README.md): scientific evaluation policy.
-- [Proposals](proposals/README.md): future implementation.
-- [Research](research/README.md): reuse candidates and open questions.
-- [Governance](governance/README.md): documentation standard and local profile.
-- [Skills](../skills/README.md): independent skill entrypoints.
+- [Requirements](requirements/README.md) — target behavior; not implemented.
+- [Architecture](architecture/README.md) — SIL, ownership boundaries and stack.
+- [Reference](reference/README.md) — experiment artifacts and metric/evaluation contracts.
+- [Validation](validation/README.md) — scientific, reproducibility and promotion gates.
+- [Proposals](proposals/README.md) — phased implementation.
+- [Research](research/README.md) — reuse studies, including autoresearch.
+- [Governance](governance/README.md) — local profile and portable documentation standard.
+- [Skills](../skills/README.md) — independently callable entrypoints.
 
-Documents explicitly describing future behavior are not evidence that implementation exists.
+The current PR is documentation and skill instructions; design contracts and examples do not imply runnable software.

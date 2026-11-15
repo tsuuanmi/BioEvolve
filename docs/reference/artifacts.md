@@ -3,29 +3,52 @@ status: draft
 implements: [SRS-BE]
 ---
 
-# Scientific experiment artifact envelope (proposed)
+# Scientific experiment artifacts — v0 proposal
 
-Each skill outputs an immutable artifact reference and a structured disposition, not unverified free-form success. Basic kinds:
+Skills exchange immutable, versioned **artifacts**, not arbitrary assertions. IDs/digests reference data stored under target repository permissions; System Work/Attempt IDs remain distinct.
 
-| Kind | Required fields |
+| Kind | Required evidence |
 |---|---|
-| target | kind, URI, pinned revision/checkpoint hash, authorization |
-| observation | target ref, method, raw evidence ref, limitations |
-| failure | baseline ref, dataset digest, error class, reproducer |
-| hypothesis | failure ref, cause, expected effect, falsification, controls |
-| intervention | base ref, candidate ref, reversible patch/checkpoint |
-| evaluation | baseline/candidate refs, evaluator version, dataset hash, metrics, regressions, uncertainty, runtime/cost |
-| feedback | evaluation ref, decision, reason, next hypothesis, unresolved risk |
+| target | kind, URI, revision/checkpoint hash, permitted scope, domain evaluator |
+| idea | origin (failure, literature, operator), expected impact, prior related experiments |
+| hypothesis | idea ref, causal claim, alternatives, falsifier, expected effect |
+| metric_contract | primary metric + direction, minimum effect, mandatory safety gates, diagnostic slices, resource budget, evaluator hash, dataset/splits and approval/freeze state |
+| baseline | target revision, metric contract ref, environment, measurements, logs/digests |
+| experiment | hypothesis ref, base/candidate revision, isolated patch, budget, run outcome, evaluator logs |
+| evaluation | exact baseline/candidate refs, frozen metric contract hash, per-slice deltas, uncertainty, regressions, resource usage, comparable flag |
+| feedback | evaluation ref, classification, rationale, next hypothesis or stop, historical lineage |
 
-Include timestamp, toolchain and environment, dependency versions, seeds when applicable, checksums and logs. Large private data remain external with access-controlled references. Never compare results from mismatched inputs or evaluator versions.
+## Proposed schema shape (illustrative, not executable)
 
-Illustrative (not an executable schema):
 ```yaml
 contract: bioevolve.experiment/v0-proposal
-target: {kind: tool, uri: git+https://github.com/tsuuanmi/DNA, revision: "<SHA>"}
-hypothesis: {claim: "<falsifiable>", expected_effect: "<measure>", control: "<negative control>"}
-evaluation: {baseline_ref: "<id>", candidate_ref: "<id>", dataset_digest: "<sha256>", regressions: []}
-decision: {status: investigate, reason: "Independent validation pending"}
+idea:
+  source: "a reproducible failure or observation"
+hypothesis:
+  statement: "a falsifiable mechanism"
+  prediction: "what should change and where"
+  falsification: "what evidence would refute it"
+metric_contract:
+  evaluator_sha256: "<digest>"
+  dataset_manifest_sha256: "<digest>"
+  primary: {name: "domain-specific metric", direction: "maximize", min_effect: "<predefined>"}
+  hard_gates: ["no unacceptable scientific regressions"]
+  diagnostics: ["failure classes", "dataset strata"]
+  resources: {wall_time_budget_s: "<fixed>"}
+  frozen_before_candidate: true
+experiment:
+  baseline_revision: "<immutable SHA>"
+  candidate_revision: "<immutable SHA>"
+  status: completed
+evaluation:
+  comparator: paired
+  decision: inconclusive
+feedback:
+  next_hypothesis: "what to test next, if authorized"
 ```
 
-**System mapping:** System Work/Attempt IDs and verification status remain System-owned; BioEvolve experiment IDs remain separate. Adapter uses actual System API after inspecting it; do not invent field compatibility. Scientific evaluation is a separate gate.
+No metric may be changed after observing a candidate and still count as the same comparison. Failures, OOM and timeout are explicit statuses. Artifacts should include platform/toolchain versions, seeds, hashes, logs, data privacy classification and access references. Avoid copying sample identifiers or weights into public logs. Raw observations are distinct from interpretations and claimed causal mechanisms.
+
+**System handoff:** BioEvolve returns experiment IDs and artifact references; System independently verifies Work/Attempt. Domain owners approve biological scientific validity; BioEvolve alone cannot certify it.
+
+See [metric design](metrics.md) for precedence and domain-specific proposals.

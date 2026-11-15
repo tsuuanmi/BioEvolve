@@ -1,0 +1,3 @@
+interface:
+  display_name: "Experiment Evaluation"
+  short_description: "Evaluate a scientific software or biological-model candidate against a pinned baseline using ap"

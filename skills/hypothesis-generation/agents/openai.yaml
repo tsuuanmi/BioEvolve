@@ -1,0 +1,3 @@
+interface:
+  display_name: "Hypothesis Generation"
+  short_description: "Turn a bioinformatics improvement idea, known limitation, literature observation or error class"

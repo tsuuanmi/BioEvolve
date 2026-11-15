@@ -1,3 +1,6 @@
 # Reference
 
-[Artifact contract proposal](artifacts.md) defines intended portable outputs. These are **not implemented or versioned release APIs**.
+- [Artifact contract](artifacts.md) — portable target, hypothesis, metric plan, evaluation and feedback records.
+- [Metric and objective design](metrics.md) — canonical, explicit selection/approval process and domain examples.
+
+Both are v0 **proposals**; they are not published APIs or executable schema definitions.
